@@ -1,0 +1,88 @@
+﻿@model IEnumerable<StudentRecordManagementSystem.Models.Student>
+
+<h2 class="mb-4 text-center">
+    <i class="bi bi-table"></i>
+    Display All Students
+</h2>
+
+<table class="table table-striped table-hover table-bordered shadow">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+            <th>Maths</th>
+            <th>Physics</th>
+            <th>Chemistry</th>
+            <th>English</th>
+            <th>Programming</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var student in Model)
+        {
+                <tr>
+
+                    <td>@student.RollNumber</td>
+                    <td>@student.Name</td>
+                    <td>@student.Maths</td>
+                    <td>@student.Physics</td>
+                    <td>@student.Chemistry</td>
+                    <td>@student.English</td>
+                    <td>@student.Programming</td>
+
+                    <td>
+
+                        <a asp-action="DisplayStudent"
+                           asp-route-rollNo="@student.RollNumber"
+                           class="btn btn-info btn-sm">
+
+                            <i class="bi bi-eye-fill"></i>
+                            View
+
+                        </a>
+
+                        <a asp-action="Edit"
+                           asp-route-rollNo="@student.RollNumber"
+                           class="btn btn-warning btn-sm">
+
+                            <i class="bi bi-pencil-square"></i>
+                            Edit
+
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-rollNo="@student.RollNumber"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this student?')">
+
+                            <i class="bi bi-trash-fill"></i>
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<div class="text-center">
+
+    <a asp-action="Dashboard"
+       class="btn btn-secondary">
+
+        <i class="bi bi-arrow-left"></i>
+        Back to Dashboard
+
+    </a>
+
+</div>

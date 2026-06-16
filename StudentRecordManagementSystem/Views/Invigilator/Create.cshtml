@@ -1,0 +1,83 @@
+﻿@model StudentRecordManagementSystem.Models.Student
+
+<div class="card shadow">
+
+    <div class="card-header bg-success text-white text-center">
+        <h3>
+            <i class="bi bi-person-plus-fill"></i>
+            Add Student
+        </h3>
+    </div>
+
+    <div class="card-body">
+
+        <form asp-action="Create" method="post">
+
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name"
+                       class="form-control"
+                       placeholder="Enter Student Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Maths"></label>
+                <input asp-for="Maths"
+                       class="form-control"
+                       placeholder="Enter Maths Marks" />
+                <span asp-validation-for="Maths" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Physics"></label>
+                <input asp-for="Physics"
+                       class="form-control"
+                       placeholder="Enter Physics Marks" />
+                <span asp-validation-for="Physics" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Chemistry"></label>
+                <input asp-for="Chemistry"
+                       class="form-control"
+                       placeholder="Enter Chemistry Marks" />
+                <span asp-validation-for="Chemistry" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="English"></label>
+                <input asp-for="English"
+                       class="form-control"
+                       placeholder="Enter English Marks" />
+                <span asp-validation-for="English" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Programming"></label>
+                <input asp-for="Programming"
+                       class="form-control"
+                       placeholder="Enter Programming Marks" />
+                <span asp-validation-for="Programming" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-floppy-fill"></i>
+                Save Student
+            </button>
+
+            <a asp-action="Dashboard" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Back
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+        <partial name="_ValidationScriptsPartial" />
+}
