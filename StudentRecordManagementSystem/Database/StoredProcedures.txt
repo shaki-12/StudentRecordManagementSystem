@@ -1,1 +1,148 @@
-﻿
+﻿-- Add Student
+
+CREATE PROCEDURE sp_AddStudent
+(
+    @Name VARCHAR(30),
+    @Maths INT,
+    @Physics INT,
+    @Chemistry INT,
+    @English INT,
+    @Programming INT
+)
+AS
+BEGIN
+
+    DECLARE @RollNumber INT
+
+    SET @RollNumber =
+    ISNULL
+    (
+        (SELECT MAX(RollNumber) + 1 FROM Students),
+        10000
+    )
+
+    INSERT INTO Students
+    (
+        RollNumber,
+        Name,
+        Maths,
+        Physics,
+        Chemistry,
+        English,
+        Programming,
+        IsActive
+    )
+    VALUES
+    (
+        @RollNumber,
+        @Name,
+        @Maths,
+        @Physics,
+        @Chemistry,
+        @English,
+        @Programming,
+        1
+    )
+
+END
+GO
+
+
+
+-- Get Student By Roll Number
+
+CREATE PROCEDURE sp_GetStudentByRollNo
+(
+    @RollNumber INT
+)
+AS
+BEGIN
+
+    SELECT *
+    FROM Students
+    WHERE RollNumber = @RollNumber
+    AND IsActive = 1
+
+END
+GO
+
+
+
+-- Get All Students
+
+CREATE PROCEDURE sp_GetAllStudents
+AS
+BEGIN
+
+    SELECT *
+    FROM Students
+    WHERE IsActive = 1
+
+END
+GO
+
+
+
+-- Update Student Marks
+
+CREATE PROCEDURE sp_UpdateStudentMarks
+(
+    @RollNumber INT,
+    @Maths INT,
+    @Physics INT,
+    @Chemistry INT,
+    @English INT,
+    @Programming INT
+)
+AS
+BEGIN
+
+    UPDATE Students
+    SET
+        Maths = @Maths,
+        Physics = @Physics,
+        Chemistry = @Chemistry,
+        English = @English,
+        Programming = @Programming
+    WHERE RollNumber = @RollNumber
+
+END
+GO
+
+
+
+-- Delete Student (Soft Delete)
+
+CREATE PROCEDURE sp_DeleteStudent
+(
+    @RollNumber INT
+)
+AS
+BEGIN
+
+    UPDATE Students
+    SET IsActive = 0
+    WHERE RollNumber = @RollNumber
+
+END
+GO
+
+
+
+-- Login User
+
+CREATE PROCEDURE sp_LoginUser
+(
+    @Username VARCHAR(50),
+    @Password VARCHAR(50)
+)
+AS
+BEGIN
+
+    SELECT *
+    FROM Users
+    WHERE Username = @Username
+    AND Password = @Password
+
+END
+GO

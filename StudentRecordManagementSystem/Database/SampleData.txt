@@ -1,1 +1,40 @@
-﻿
+﻿-- Invigilator Login
+
+INSERT INTO Users
+VALUES
+(
+    'admin',
+    'admin123',
+    'Invigilator',
+    NULL
+);
+
+
+
+-- Student Login
+
+INSERT INTO Users
+VALUES
+(
+    'student1',
+    'student123',
+    'Student',
+    10000
+);
+
+
+
+-- Sample Student
+
+INSERT INTO Students
+VALUES
+(
+    10000,
+    'John',
+    90,
+    85,
+    88,
+    92,
+    95,
+    1
+);

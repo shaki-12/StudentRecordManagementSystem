@@ -1,1 +1,21 @@
-﻿
+﻿CREATE TABLE Students
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    RollNumber INT UNIQUE,
+    Name VARCHAR(30),
+    Maths INT,
+    Physics INT,
+    Chemistry INT,
+    English INT,
+    Programming INT,
+    IsActive BIT
+);
+
+CREATE TABLE Users
+(
+    UserId INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(50),
+    Password VARCHAR(50),
+    Role VARCHAR(20),
+    RollNumber INT NULL
+);
